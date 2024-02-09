@@ -27,8 +27,54 @@
     </header>
 
 
+    <section class="main__block">
+        <div class="container">
+            <div class="main__content">
+                <div class="last__news">
+                    <div class="news__bar">
+                        <div class="square"></div>
+                        <p class="title">НОВИНКИ</p>
+                    </div>
+
+                    <div class="anime__list">
+                        <div class="anime__block hoverblock">
+                            <div class="img"></div>
+                            <p class="anime___title">Lorem ipsum</p>
+                        </div>
+                        
+                    </div>
+
+                </div>
+
+                    <div class="genre__list">
+                        <div class="news__bar">
+                            <div class="square"></div>
+                            <p class="title">ЖАНРЫ</p>
+                        </div>
+
+                        <div class="genres">
+                            <ul>
+                                <li>Сёнэн</li>
+                                <li>Школа</li>
+                                <li>Ужасы</li>
+                                <li>Повседневность</li>
+                                <li>Детектив</li>
+                                <li>Детское</li>
+                                <li>Спорт</li>
+                                <li>Махо-сёдзе</li>
+                                <li>Музыка</li>
+                                <li>Драма</li>
+                                <li>Приклюения</li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </section>
 
 
 
+<script src="/script/main.js"></script>
 </body>
 </html>
