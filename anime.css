@@ -21,6 +21,32 @@ body{
     margin: 0 auto;
 }
 
+.news__bar{
+    width: 100%;
+    height: 35px;
+
+    background-color: rgb(227, 156, 151, 0.7);
+
+    display: flex;
+    align-items: center;
+
+
+}
+
+.square{
+    width: 15px;
+    height: 15px;
+    background-color: #09432A;
+
+    margin-left: 20px;
+   
+}
+
+.title{
+    margin-left: 30px;
+    text-transform: capitalize;
+}
+
 
 /*_______________ HEADER__________________*/
 
@@ -85,111 +111,35 @@ input[type="submit"]{
     width: 100%;
     height: 100vh;
 
-    
+    background-color: #eaeaea;;
 
+    padding: 50px 70px;
+
+}
+
+.anime__content{
     display: grid;
-    grid-template-columns: 70% 30%;
-
+    grid-template-columns: 30% 70%;
 }
 
-.last__news{
-
+.anime__pic{
     width: 100%;
-    height: 100%;
-
-    background-color: #eaeaea;
-
-    padding: 40px;
+    height: 430px;
+    background-color: blue;
 }
 
-.genre__list{
-    width: 100%;
-    height: 100%;
-    
-    background-color: rgb(234, 234, 234, 0.8);;
-
-    padding: 40px;
+.anime__info{
+    margin-left: 70px;
 }
 
-/*_______________ ANIME LIST __________________*/
-
-.news__bar{
-    width: 100%;
-    height: 35px;
-
-    background-color: rgb(227, 156, 151, 0.7);
-
-    display: flex;
-    align-items: center;
-
-
+.anime__info h1{
+    margin-bottom: 15px;
 }
 
-.square{
-    width: 15px;
-    height: 15px;
-    background-color: #09432A;
-
-    margin-left: 20px;
-   
+.tag__info{
+    margin: 20px 0 70px;
 }
 
-.title{
-    margin-left: 30px;
+.tag__info p{
+    margin-bottom: 5px;
 }
-
-.anime__list{
-    width: 100%;
-   
-    margin-top: 40px;
-    
-
-
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px 17px;
-}
-
-.anime__block{
-
-
-    width: 180px;
-    height: 280px;
-
-    display: flex;
-    flex-direction: column;
-
-    gap: 5px;
-
-    transition: transform 0.3s;
-
-}
-
-.img {
-    width: 100%;
-    height: 250px;
-    background-color: #D9D9D9;
-    
-  }
-  
-  .hoverblock {
-    transform: scale(1.1);
-  }
-
-  /*_______________ GENRE LIST __________________*/
-
-  .genres{
-    width: 100%;
-   
-    margin-top: 40px;
-  }
-
-  ul{
-    margin-left: 10px;
-  }
-
-  li{
-    list-style-type: hiragana;
-
-    margin: 10px 20px;
-  }

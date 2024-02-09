@@ -9,17 +9,9 @@
 <body>
    <header>
     <div class="container">
-    <div class="nav">
+        <div class="nav">
             <img src="../pics/logo.png" alt="" width="200px">
-            <div class="search-bar">
-                <div class="search-elem"></div>
-            </div>
-            <div class="profile-icons">
-                <div class="profile-pic"></div>
-                <h3 class="profile-name">User</h3>
-            </div>
         </div>
-    </div>
     
    </header>
 
@@ -27,15 +19,15 @@
         <div class="container">
             <div class="main-page">
                 <div class="title">
-                    <h1>Registration</h1>
-                    <p>Here you can create your account.</p>
+                    <h1>Регирстация</h1>
+                    <p>Здесь вы можете создать свой аккаунт</p>
                 </div>
 
                 <div class="inputs">
-                    <input type="text" name="" id="" placeholder="Username">
-                    <input type="text" name="" id="" placeholder="Email Address">
-                    <input type="password" name="" id="" placeholder="Create password">
-                    <p class="auth-skip">Already have an account? <span>Log in now</span></p>
+                    <input type="text" name="" id="" placeholder="Имя пользователя">
+                    <input type="text" name="" id="" placeholder="Email">
+                    <input type="password" name="" id="" placeholder="Пароль">
+                    <p class="auth-skip">Уже есть аккаунт?<span> Войти</span></p>
                 </div>
                 
 

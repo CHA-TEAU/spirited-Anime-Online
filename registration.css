@@ -1,11 +1,14 @@
- @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+@font-face {
+	font-family: 'GothamPro-Black'; 
+	src: url(/fonts/GothamPro-Black.ttf); 
+}
 
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 
-    font-family: 'Roboto', sans-serif;
+    font-family: 'GothamPro-Black';
 }
 
 body{
@@ -21,18 +24,18 @@ body{
     position: relative;
 }
 
-header{
-    background-color: #000000;
 
+header{
+    width: 100%;
+    height: 70px;
 }
 
 .nav{
-    width: 100%;
-    height: 70px;
-    
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    padding: 5px 0;
 }
 
 
@@ -129,8 +132,12 @@ header{
 input[type="text"],
 input[type="password"]{
     height: 30px;
-    padding: 3px;
+    padding: 3px 0 3px 8px;
+
+    border: none;
+    border-radius: 5px;
 }
+
 
 input[type="submit"]{
     width: 100px;
@@ -141,14 +148,14 @@ input[type="submit"]{
     text-align: center;
 
     border: none;
-    background-color: #4EB4A7;
-    color: #FFFFFF;
+    background-color: rgb(227, 156, 151, 0.7);
+    color: #000000;
     cursor: pointer;
     transition: 0.2 linear;
 }
 
 input[type="submit"]:hover{
-    background-color: #f4a442;
+    background-color: rgba(190, 124, 120, 0.7);
 }
 
 
@@ -156,7 +163,7 @@ input[type="submit"]:hover{
     font-size: 14px;
 
     text-align: end;
-    margin-top: -15px;
+    margin-top: -10px;
 }
 
 a{

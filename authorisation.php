@@ -17,13 +17,6 @@
     <div class="container">
     <div class="nav">
             <img src="../pics/logo.png" alt="" width="200px">
-            <div class="search-bar">
-                <div class="search-elem"></div>
-            </div>
-            <div class="profile-icons">
-                <div class="profile-pic"></div>
-                <h3 class="profile-name">User</h3>
-            </div>
         </div>
     </div>
     
@@ -33,14 +26,14 @@
         <div class="container">
             <div class="main-page">
                 <div class="title">
-                    <h1>Authorisation</h1>
-                    <p>Here you can log in to your account.</p>
+                    <h1>Авторизация</h1>
+                    <p>Здесь вы можете зайти в свой аккаунт</p>
                 </div>
 
                 <div class="inputs">
-                    <input type="text" name="" id="" placeholder="Username">
-                    <input type="password" name="" id="" placeholder="Create password">
-                    <p class="auth-skip">Don't have an account yet? <a href="index.php">Create now</a></p>
+                    <input type="text" name="" id="" placeholder="Имя пользователя">
+                    <input type="password" name="" id="" placeholder="Пароль">
+                    <p class="auth-skip">Еще не завели аккаунт? <a href="index.php">Регистрация</a></p>
                 </div>
                 
 
