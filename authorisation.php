@@ -1,3 +1,9 @@
+<?php
+    if(($_POST['toreg'])){
+        header("Location: index.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,19 +33,18 @@
         <div class="container">
             <div class="main-page">
                 <div class="title">
-                    <h1>Registration</h1>
-                    <p>Here you can create your account.</p>
+                    <h1>Authorisation</h1>
+                    <p>Here you can log in to your account.</p>
                 </div>
 
                 <div class="inputs">
                     <input type="text" name="" id="" placeholder="Username">
-                    <input type="text" name="" id="" placeholder="Email Address">
                     <input type="password" name="" id="" placeholder="Create password">
-                    <p class="auth-skip">Already have an account? <span>Log in now</span></p>
+                    <p class="auth-skip">Don't have an account yet? <a href="index.php">Create now</a></p>
                 </div>
                 
 
-                <input type="submit" value="Register">
+                <input type="submit" name="toreg" value="Log In">
                 
             </div>
         </div>
