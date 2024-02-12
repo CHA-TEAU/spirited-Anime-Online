@@ -28,7 +28,7 @@
 
 
     <section class="main__block">
-    <ion-icon name="cog-outline" id="admin"></ion-icon>
+    <ion-icon name="cog-outline" id="gear"></ion-icon>
         <div class="container">
             <div class="main__content">
                 <div class="last__news">
@@ -73,6 +73,24 @@
             </div>
         </div>
     </section>
+
+<div class="admin" id="admin">
+    <div class="admin__panel">
+            <ion-icon name="close-outline" id="close" class="closebtn"></ion-icon>
+           <input type="file" class="picture">
+           <input type="text" placeholder="Название">
+           <input type="text" placeholder="Тип">
+           <input type="text" placeholder="Эпизоды">
+           <select name="updname">
+               <option value="Жанр">Жанр</option>
+          </select>
+          <input type="text" placeholder="Описание" class="desc">
+
+
+       </div>
+
+</div>
+   
 
 
 
