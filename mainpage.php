@@ -28,6 +28,7 @@
 
 
     <section class="main__block">
+    <ion-icon name="cog-outline" id="admin"></ion-icon>
         <div class="container">
             <div class="main__content">
                 <div class="last__news">
@@ -75,6 +76,11 @@
 
 
 
+
+
+
 <script src="/script/main.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
