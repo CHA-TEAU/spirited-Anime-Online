@@ -31,13 +31,13 @@
                 </div>
 
                 <div class="inputs">
-                    <input type="text" name="" id="" placeholder="Имя пользователя">
-                    <input type="password" name="" id="" placeholder="Пароль">
+                    <input type="text" name="login" id="" placeholder="Имя пользователя">
+                    <input type="password" name="pass" id="" placeholder="Пароль">
                     <p class="auth-skip">Еще не завели аккаунт? <a href="index.php">Регистрация</a></p>
                 </div>
                 
 
-                <input type="submit" name="toreg" value="Log In">
+                <input type="submit" name="auth" value="Log In">
                 
             </div>
         </div>
