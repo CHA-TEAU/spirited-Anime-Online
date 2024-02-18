@@ -1,9 +1,3 @@
-<?php
-    if(($_POST['toreg'])){
-        header("Location: index.php");
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +7,45 @@
     <link rel="stylesheet" href="registration.css">
 </head>
 <body>
+
+<?php
+  session_start();
+if (($_POST['auth'])) {
+
+    $login = $_POST['login'];
+    $pass = $_POST['pass'];
+
+    if (!empty($login) and !empty($pass)) {
+        $db = @new mysqli('localhost', 'root', '', 'spirited');
+
+
+        if ($db->connection_errno) {
+            echo "error: " . $db->connection_errno;
+
+        } else {
+
+            $query = $db->query("SELECT * FROM `users` WHERE `Login`='$login' AND `Password`='$pass'");
+
+                if($query -> num_rows == 0){
+                    echo '<div class ="alert"> Такого пользователя не существует </div>';
+                }else{
+                
+                    header("Location: mainpage.php");
+                }
+
+                
+
+            }
+
+        }          
+    
+
+    
+    }
+?>
+
+
+
    <header>
     <div class="container">
     <div class="nav">
@@ -30,15 +63,17 @@
                     <p>Здесь вы можете зайти в свой аккаунт</p>
                 </div>
 
-                <div class="inputs">
-                    <input type="text" name="login" id="" placeholder="Имя пользователя">
-                    <input type="password" name="pass" id="" placeholder="Пароль">
-                    <p class="auth-skip">Еще не завели аккаунт? <a href="index.php">Регистрация</a></p>
-                </div>
-                
+                <form action="" method="post" class="form">
 
-                <input type="submit" name="auth" value="Log In">
-                
+                    <div class="inputs">
+                        <input type="text" name="login" id="" placeholder="Имя пользователя">
+                        <input type="password" name="pass" id="" placeholder="Пароль">
+                        <p class="auth-skip">Еще не завели аккаунт? <a href="index.php">Авторизация</a></p>
+                    </div>
+
+
+                    <input type="submit" name="auth" value="Log In">
+                </form>
             </div>
         </div>
            

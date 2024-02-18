@@ -1,3 +1,8 @@
+<?
+    include 'dbconnect.php';
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,6 +33,12 @@
 
 
     <section class="main__block">
+
+    <?
+    $db = DB :: dbconn();
+    $query = $db -> query("SELECT * FROM `animes` ");  
+    ?>
+
     <ion-icon name="cog-outline" id="gear"></ion-icon>
         <div class="container">
             <div class="main__content">
@@ -38,11 +49,13 @@
                     </div>
 
                     <div class="anime__list">
+                    <? while ( $row = $query -> fetch_assoc())
+                    { ?>
                         <div class="anime__block hoverblock">
-                            <div class="img"></div>
-                            <p class="anime___title">Lorem ipsum</p>
+                           <img src=<?=$row['Picture']?> alt="" class="img">
+                            <p class="anime___title"><?=$row['Title']?></p>
                         </div>
-                        
+                    <?}?>    
                     </div>
 
                 </div>
@@ -56,7 +69,7 @@
                         <div class="genres">
                             <ul>
                                 <li>Сёнэн</li>
-                                <li>Школа</li>
+                                <li>Романтика</li>
                                 <li>Ужасы</li>
                                 <li>Повседневность</li>
                                 <li>Детектив</li>
