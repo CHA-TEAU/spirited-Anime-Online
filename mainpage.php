@@ -1,7 +1,25 @@
 <?
     include 'dbconnect.php';
     
-?>
+    if (isset($_POST['add'])) {
+        $title = $_POST['title'];
+        $type = $_POST['type'];
+        $eps = $_POST['eps'];
+        $desc = $_POST['desc'];
+        $genre = $_POST['genre'];
+        $uploaddir = 'pics/';
+        $pic = $uploaddir . basename($_FILES['pic']['name']);
+        
+        if (!empty($title)) {
+            // Move uploaded file to destination directory
+            if (move_uploaded_file($_FILES['pic']['tmp_name'], $pic)) {
+                $db = DB::dbconn();
+                $query = $db->query("INSERT INTO `animes`(`id`, `Title`, `Type`, `Episodes`, `Genre`, `Description`, `Picture`) 
+                                    VALUES (NULL,'$title','$type','$eps','$genre','$desc','$pic')");
+            }
+    }
+}
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,17 +34,21 @@
         <div class="container">
             <div class="nav">
                 <div class="logo">
-                    <img src="pics/logo.png" alt="" width="200px">
+                    <img src="pics/logo.png" alt="">
                 </div>
 
                 <div class="search">
                     <input type="search" name="searchbar" id="serachbar">
-                    <input type="submit" value="Search">
+                    <div class="searchbtn">Поиск</div>
                 </div>
 
-                <div class="prof__pic">
-
+                <div class="icons">
+                <ion-icon name="cog-outline" id="gear"></ion-icon>
+                <div class="prof__pic"></div>
                 </div>
+                
+
+                
             </div>
         </div>
     </header>
@@ -39,7 +61,7 @@
     $query = $db -> query("SELECT * FROM `animes` ");  
     ?>
 
-    <ion-icon name="cog-outline" id="gear"></ion-icon>
+    
         <div class="container">
             <div class="main__content">
                 <div class="last__news">
@@ -49,6 +71,7 @@
                     </div>
 
                     <div class="anime__list">
+                        <div class="more"><ion-icon name="menu-outline"></ion-icon></div>
                     <? while ( $row = $query -> fetch_assoc())
                     { ?>
                         <div class="anime__block hoverblock">
@@ -78,7 +101,7 @@
                                 <li>Махо-сёдзе</li>
                                 <li>Музыка</li>
                                 <li>Драма</li>
-                                <li>Приклюения</li>
+                                <li>Приключения</li>
                                 
                             </ul>
                         </div>
@@ -88,19 +111,21 @@
     </section>
 
 <div class="admin" id="admin">
-    <div class="admin__panel">
+    <form action="" method="post"  enctype="multipart/form-data">
+        <div class="admin__panel">
             <ion-icon name="close-outline" id="close" class="closebtn"></ion-icon>
-           <input type="file" class="picture">
-           <input type="text" placeholder="Название">
-           <input type="text" placeholder="Тип">
-           <input type="text" placeholder="Эпизоды">
-           <select name="updname">
+           <input type="file" class="picture" name="pic" class="input">
+           <input type="text" placeholder="Название" name="title" class="input">
+           <input type="text" placeholder="Тип" name="type" class="input">
+           <input type="text" placeholder="Эпизоды" name="eps" class="input">
+           <select name="genre">
                <option value="Жанр">Жанр</option>
           </select>
-          <input type="text" placeholder="Описание" class="desc">
-
+          <textarea name="desc" class="desc"></textarea>
+          <input type="submit" value="Добавить" name="add" class="addbtn">
 
        </div>
+    </form>   
 
 </div>
    
