@@ -67,11 +67,18 @@ input[type="search"] {
     gap: 15px;
 }
 
-.prof__pic {
+.prof__pic{
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: red;
+    overflow: hidden;
+
+}
+
+.prof__pic img{
+    width: 100%; 
+    height: auto; 
+    object-fit: cover;
 }
 
 /* Media for Header */

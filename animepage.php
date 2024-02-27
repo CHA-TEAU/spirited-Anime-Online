@@ -49,7 +49,7 @@
 
                 <div class="icons">
                 <ion-icon name="cog-outline" id="gear"></ion-icon>
-                <div class="prof__pic"></div>
+                <a href="profile.php" class="prof__pic"></a>
                 </div>
             </div>
         </div>

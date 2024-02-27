@@ -1,3 +1,28 @@
+<?
+    include 'dbconnect.php';
+    $db = DB :: dbconn();
+    $query = $db -> query("SELECT * FROM `users` WHERE `Login` = 'chateau'");
+    $row = $query -> fetch_assoc();
+    
+    if($_POST['upl'])
+    {
+       
+
+            $uploaddir = 'pics/';
+            $pic = $uploaddir . basename($_FILES['pic']['name']);
+            
+            
+            move_uploaded_file($_FILES['pic']['tmp_name'], $pic);
+            $query = $db -> query ("UPDATE `users` SET `Photo`='$pic' WHERE `Login` = 'chateau'");
+                
+                
+            
+    }
+
+
+  
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,11 +41,11 @@
 
                 <div class="search">
                     <input type="search" name="searchbar" id="serachbar">
-                    <input type="submit" value="Search">
+                    <div class="searchbtn"></div>
                 </div>
 
                 <div class="prof__pic">
-
+                    <img src=<?=$row['Photo']?> alt="">
                 </div>
             </div>
         </div>
@@ -30,7 +55,17 @@
         <div class="container">
             <div class="profile__content">
 
-                <div class="profile__pic"></div>
+                <div class="profile__pic-div">
+                    <img src=<?=$row['Photo']?> alt="" class="profile__pic">
+                    <div class="prof_pic__upd">
+                        <form action="" method="post"  enctype="multipart/form-data">
+                            <label for="photo-upload"><ion-icon name="images-outline"></ion-icon></label>
+                            <input type="file" name="pic" id="photo-upload">
+                            <input type="submit" value="upl" name="upl">  
+                        </form>
+                          
+                    </div>
+                </div>
 
                 <div class="prof__info">
                     <h1>Имя пользователя</h1>
@@ -41,7 +76,6 @@
                     </div>
 
                     <div class="fav__list">
-                        <div class="fav__elem"></div>
                         <div class="fav__elem"></div>
                         <div class="fav__elem"></div>
                         <div class="fav__elem"></div>
@@ -113,5 +147,8 @@
         </div>
     </section>    
     
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
