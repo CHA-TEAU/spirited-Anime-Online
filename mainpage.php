@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="search">
-                    <input type="search" name="searchbar" id="serachbar">
+                    <input type="search" name="searchbar" id="searchbar">
                     <div class="searchbtn">Поиск</div>
                 </div>
 
@@ -74,10 +74,10 @@
                         <div class="more"><ion-icon name="menu-outline"></ion-icon></div>
                     <? while ( $row = $query -> fetch_assoc())
                     { ?>
-                        <div class="anime__block hoverblock">
+                        <a href="/animepage.php?id=<?=$row['id']?>" class="anime__block hoverblock">
                            <img src=<?=$row['Picture']?> alt="" class="img">
                             <p class="anime___title"><?=$row['Title']?></p>
-                        </div>
+                    </a>
                     <?}?>    
                     </div>
 
