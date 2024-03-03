@@ -22,9 +22,8 @@
                 }
             }
     }
+        ?>
 
-  
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -61,6 +60,12 @@
                 <div class="anime__content">
                     <div class="anime__pic">
                         <img src=<?=$row['Picture']?> alt="">
+
+                        <div class="anime-func">
+                            <select name="status">
+                                 <option value="Смотрю">Смотрю</option>
+                            </select>
+                        </div>
                     </div>
 
                     <div class="anime__info">
@@ -89,13 +94,48 @@
             </div>
 
             <div class="player">
+            <?php
+                $query = $db->query("SELECT * FROM `videos` WHERE `ID_Anime` = $id");
+                $episodes = $query->fetch_all(MYSQLI_ASSOC);
+
+                // Extract video URLs into an array
+                $videoUrls = array_column($episodes, 'video_url');
+            ?>
                 <div class="player__cont">
-                    <video controls>
-                        <source src="<?=$row['Video']?>" type="video/mp4">
+                    <video id="videoPlayer" controls>
+                        <source src="<?=$videoUrls[0]?>" type="video/mp4">
                     </video>
                 </div>
+    
+                <div class="video__swap">
+                    <p class="prev" onclick="switchEpisode('prev')"><= Предыдущая серия</p>
+                    <p class="next" onclick="switchEpisode('next')">Следующая серия =></p>
+                </div>
             </div>
-        </div>
+            <script>
+                let videoUrls = <?= json_encode($videoUrls) ?>; 
+
+                    function switchEpisode(direction) {
+                
+                    let currentSrc = document.getElementById('videoPlayer').getAttribute('src');
+                    let currentIndex = videoUrls.indexOf(currentSrc);
+                    
+                    
+                    let newIndex;
+                    if (direction === 'prev') {
+                        newIndex = currentIndex - 1;
+                    } else {
+                        newIndex = currentIndex + 1;
+                    }
+                
+                   
+                    if (newIndex >= 0 && newIndex < videoUrls.length) {
+                        
+                        document.getElementById('videoPlayer').setAttribute('src', videoUrls[newIndex]);
+                        document.getElementById('videoPlayer').play(); 
+                    }
+                }
+            </script>
     </section>    
 
     <div class="admin" id="admin">
