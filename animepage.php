@@ -21,8 +21,25 @@
                     
                 }
             }
+
+        if(isset($_POST['heart-outline']) && isset($_POST['heart'])){
+            $id = $_POST['id'];
+            $like = $_POST['heart-outline'];
+            $query = $db -> query("INSERT INTO `liked`(`id`, `Likes`) VALUES (NULL, '$id')");
+        }
     }
-        ?>
+
+
+
+    $wcd = $db->query("SHOW COLUMNS FROM `watchlist`");
+    if ($wcd) {
+        
+        $columns = [];
+        while ($field = $wcd->fetch_assoc()) {
+            $columns[] = $field['Field'];
+        }
+    }
+?>
 
 
 <!DOCTYPE html>
@@ -61,10 +78,17 @@
                     <div class="anime__pic">
                         <img src=<?=$row['Picture']?> alt="">
 
-                        <div class="anime-func">
-                            <select name="status">
-                                 <option value="Смотрю">Смотрю</option>
-                            </select>
+                        <div class="functionals">
+                            <form action="" method="post" class="anime-func">
+                                <select name="status" class="wcd">
+                                    <? for ($i = 1; $i < count($columns); $i++) {?>
+                                    
+                                     <option value=<?=$columns[$i]?>><?=$columns[$i]?></option>
+                                     <?}?>
+                                </select>
+                                        
+                                <ion-icon name="heart-outline" class="like filled"></ion-icon>
+                            </form>
                         </div>
                     </div>
 

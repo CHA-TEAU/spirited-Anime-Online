@@ -11,7 +11,7 @@
         $pic = $uploaddir . basename($_FILES['pic']['name']);
         
         if (!empty($title)) {
-            // Move uploaded file to destination directory
+           
             if (move_uploaded_file($_FILES['pic']['tmp_name'], $pic)) {
                 $db = DB::dbconn();
                 $query = $db->query("INSERT INTO `animes`(`id`, `Title`, `Type`, `Episodes`, `Genre`, `Description`, `Picture`) 
@@ -119,8 +119,12 @@
            <input type="text" placeholder="Тип" name="type" class="input">
            <input type="text" placeholder="Эпизоды" name="eps" class="input">
            <select name="genre">
-               <option value="Жанр">Жанр</option>
-          </select>
+           <?
+                $genres = $db->query("SELECT * FROM `genres`");
+                while ($list = $genres->fetch_assoc()){?>
+               <option value=<?=$list['id']?>><?=$list['GName']?></option>
+                <?}?>
+            </select>
           <textarea name="desc" class="desc"></textarea>
           <input type="submit" value="Добавить" name="add" class="addbtn">
 
