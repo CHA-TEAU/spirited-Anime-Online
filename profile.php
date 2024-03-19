@@ -1,26 +1,37 @@
 <?
     include 'dbconnect.php';
+    session_start();
     $db = DB :: dbconn();
-    $query = $db -> query("SELECT * FROM `users` WHERE `Login` = 'chateau'");
-    $row = $query -> fetch_assoc();
-    
-    if($_POST['upl'])
-    {
-       
+    $uid = $_SESSION['id'];
 
+    $query = $db -> query("SELECT * FROM `users` WHERE `id` = '$uid'");
+    $var = $query -> fetch_assoc();
+    
+    if(isset($_POST['update']))
+    {
+
+            $newLogin = $_POST['login'];
             $uploaddir = 'pics/';
             $pic = $uploaddir . basename($_FILES['pic']['name']);
             
             
             move_uploaded_file($_FILES['pic']['tmp_name'], $pic);
-            $query = $db -> query ("UPDATE `users` SET `Photo`='$pic' WHERE `Login` = 'chateau'");
-                
-                
+            $query = $db -> query ("UPDATE `users` SET `Login` = '$newLogin', `Photo`='$pic' WHERE `id` = '$uid'");   
             
+    };
+
+    
+    $like_query = "SELECT *
+    FROM liked
+    INNER JOIN animes ON animes.id = liked.Likes
+    WHERE user_id = '$uid'";
+
+    $q = $db->query($like_query);
+    $arr = [];
+    while($row = $q->fetch_assoc()) {
+        array_push($arr, $row);
     }
-
-
-  
+    $recLikes = array_slice($arr, -5);
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +56,13 @@
                 </div>
 
                 <div class="prof__pic">
-                    <img src=<?=$row['Photo']?> alt="">
+                    <?
+                        if($var['Photo'] == ''){
+                            ?><img src=../pics/user_avatar.png><?;
+                        } else {?>
+                            <img src="<?=$var['Photo']?>"><?
+                        }
+                    ?>
                 </div>
             </div>
         </div>
@@ -56,19 +73,26 @@
             <div class="profile__content">
 
                 <div class="profile__pic-div">
-                    <img src=<?=$row['Photo']?> alt="" class="profile__pic">
-                    <div class="prof_pic__upd">
-                        <form action="" method="post"  enctype="multipart/form-data">
-                            <label for="photo-upload"><ion-icon name="images-outline"></ion-icon></label>
-                            <input type="file" name="pic" id="photo-upload">
-                            <input type="submit" value="upl" name="upl">  
-                        </form>
-                          
-                    </div>
+                    <img src=<?=$var['Photo']?> alt="" class="profile__pic">
+                    <form id="upload-form" action="" method="post" enctype="multipart/form-data" class="prof_pic__upd" style="display:none;">
+                            <label for="photo-upload" name="pic">
+                                <ion-icon name="images-outline" id="pic"></ion-icon>
+                            </label>
+                            <input type="file"  id="photo-upload">
+                    </form>
+
                 </div>
 
                 <div class="prof__info">
-                    <h1>Имя пользователя</h1>
+                        
+                    <form action="" method="post"  class="login__red">
+                        <h1 class="login__field"><?=$var['Login']?></h1>
+                        <ion-icon name="pencil-outline" id="red"></ion-icon>
+                        <input type="submit" value="☑" id="ok__btn" name="update">
+                    </form>
+                       
+
+                    
 
                     <div class="news__bar">
                         <div class="square"></div>
@@ -76,78 +100,18 @@
                     </div>
 
                     <div class="fav__list">
-                        <div class="fav__elem"></div>
-                        <div class="fav__elem"></div>
-                        <div class="fav__elem"></div>
-                        <div class="fav__elem"></div>
+
+                        <?foreach($recLikes as $value){?>
+                        <img src="<?=$value['Picture']?>" class="fav__elem" alt="">
+                    
+                        <?}?>
                     </div>
                 </div>
                 
             </div>
-
-            <div class="wcd__block">
-                <div class="wcd__container">
-                    <div class="news__bar">
-                        <div class="square"></div>
-                        <p class="title">СМОТРЮ</p>
-                    </div>
-
-                    <div class="wcd__choice">
-                        <span>Смотрю /</span>
-                        <span>Просмотрено /</span>
-                        <span>Брошено</span>
-                    </div>
-
-                    <div class="wcd__list">
-                        <div class="anime__block">
-                            <div class="img"></div>
-                            <p class="anime___title">Lorem ipsum</p>
-                        </div>
-                        <div class="anime__block">
-                            <div class="img"></div>
-                            <p class="anime___title">Lorem ipsum</p>
-                        </div>
-                        <div class="anime__block">
-                            <div class="img"></div>
-                            <p class="anime___title">Lorem ipsum</p>
-                        </div>
-                        <div class="anime__block">
-                            <div class="img"></div>
-                            <p class="anime___title">Lorem ipsum</p>
-                        </div>
-                        <div class="anime__block">
-                            <div class="img"></div>
-                            <p class="anime___title">Lorem ipsum</p>
-                        </div>
-                        <div class="anime__block">
-                            <div class="img"></div>
-                            <p class="anime___title">Lorem ipsum</p>
-                        </div>
-                        <div class="anime__block">
-                            <div class="img"></div>
-                            <p class="anime___title">Lorem ipsum</p>
-                        </div>
-                        <div class="anime__block">
-                            <div class="img"></div>
-                            <p class="anime___title">Lorem ipsum</p>
-                        </div>
-                        <div class="anime__block">
-                            <div class="img"></div>
-                            <p class="anime___title">Lorem ipsum</p>
-                        </div>
-                        <div class="anime__block">
-                            <div class="img"></div>
-                            <p class="anime___title">Lorem ipsum</p>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            
-        </div>
     </section>    
     
-
+<script src="/script/profile.js"></script>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
