@@ -49,7 +49,7 @@ body {
 }
 
 
-/*_______________ HEADER__________________*/
+/*Header*/
 
 .nav {
     width: 100%;
@@ -145,16 +145,18 @@ input[type="search"] {
         margin-top: 70px;
     }
 }
-/*_______________ MAIN PAGE __________________*/
+
+/*Main Page*/
 
 .main__block{
    margin-top: 50px;
+
 }
 
 
 .profile__content{
     width: 100%;
-    height: 100%;
+    height: 70vh;
 
     padding: 50px;
 
@@ -178,6 +180,47 @@ input[type="search"] {
     text-transform: uppercase;
 }
 
+.login__red{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#red{
+    cursor: pointer;
+}
+
+.login__input{
+    width: 40%; 
+    height: 40px; 
+    padding: 5px; 
+    border: none; 
+    border-bottom: 1px solid #010101; 
+    background-color: transparent; 
+    font-size: 16px;
+    outline: none; 
+
+}
+
+#ok__btn{
+    display: none;
+    width: 40px;
+    height: 40px;
+    margin-top: 17px;
+
+    font-size: 28px;
+    border: none;
+    background-color: transparent;
+
+    cursor: pointer;
+
+    transition: 0.3 linear;
+}
+
+#ok__btn:hover{
+    color: rgb(0, 128, 102);
+}
+
 .prof__pic-div{
     width: 285px;
     height: 375px;
@@ -195,14 +238,17 @@ input[type="search"] {
 
 .prof_pic__upd{
     margin-top: 20px;
-    width: 75%;
+    width: 100%;
+
     display: flex;
-    justify-content: center;
+    gap: 15px;
 }
 
-#photo-upload{
-    display: none;
+#pic{
+    width: 20px;
+    height: 20px;
 }
+
 
 label{
     cursor: pointer;
@@ -210,8 +256,6 @@ label{
 
 .fav__list{
     width: 100%;
-
-    background-color: aqua;
 
     display: flex;
     justify-content: space-between;
@@ -223,55 +267,5 @@ label{
 .fav__elem{
     width: 120px;
     height: 170px;
-
-    background-color: crimson;
 }
 
-.wcd__block{
-    width: 100%;
-
-    background-color: rgb(234, 234, 234, 0.8);
-
-}
-
-.wcd__container{
-    padding: 0 50px;
-}
-
-
-.wcd__choice{
-    text-align: end;
-
-    margin: 10px 0 30px 0;
-}
-
-span{
-    cursor: pointer;
-}
-
-.wcd__list{
-    display: grid;
-
-    grid-template-columns: repeat(5, 1fr);
-
-    gap: 40px 0;
-}
-
-.anime__block{
-
-
-    width: 180px;
-    height: 280px;
-
-    display: flex;
-    flex-direction: column;
-
-    gap: 5px;
-}
-
-.img {
-    width: 100%;
-    height: 250px;
-    background-color: #cc1a1a;
-    
-  }
